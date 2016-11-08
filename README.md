@@ -88,3 +88,28 @@ wkkypy
 4ej8uj
 x0grn0
 ~~~
+
+## Custom Django Management commands
+
+~~~ bash
+python manage.py dumpurls
+~~~
+
+~~~ out
+zts5ze -> http://enacit.epfl.ch
+age9m9 -> http://www.epfl.ch
+u66ec3 -> http://www.google.com
+l6zou4 -> http://example.com
+~~~
+
+~~~ bash
+python manage.py refreshcodes
+python manage.py dumpurls
+~~~
+
+~~~ out
+7k95wc -> http://enacit.epfl.ch
+axdpd2 -> http://www.epfl.ch
+n17jsw -> http://www.google.com
+bbqfwq -> http://example.com
+~~~
