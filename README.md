@@ -1,5 +1,6 @@
 From trydjango1.10 https://www.youtube.com/playlist?list=PLEsfXFp6DpzQSEMN5PXvEWuD2gEWVngCZ
 
+## New project creation and basic commands
 
 ~~~ bash
 mkdir django1.10
@@ -21,6 +22,8 @@ python manage.py migrate
 
 python manage.py migrate shortener --fake
 ~~~
+
+## Django shell
 
 ~~~ bash
 python manage.py shell
@@ -52,5 +55,36 @@ rm -rf shortener/migrations/*
 rm db.sqlite3
 python manage.py makemigrations shortener
 python manage.py createsuperuser
+~~~
 
+## Django Model manager
+
+~~~ bash
+python manage.py shell
+~~~
+
+~~~ python
+In [1]: from shortener.models import ShortURL
+
+In [2]: ShortURL.objects.all().count()
+Out[2]: 4
+
+In [3]: ShortURL.objects.count()
+Out[3]: 5
+
+In [4]: for u in ShortURL.objects.filter(id__gte=1): print(u.shortcode)
+12EZ4I
+home
+google
+bb
+k5mdcx
+
+In [5]: ShortURL.objects.regenerate_all_shortcodes()
+
+In [6]: for u in ShortURL.objects.filter(id__gte=1): print(u.shortcode)
+w7wfb8
+2omn03
+wkkypy
+4ej8uj
+x0grn0
 ~~~
