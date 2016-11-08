@@ -1,11 +1,15 @@
 import string
 import random
 
+from django.conf import settings
+
+SHORTCODE_MIN = getattr(settings, "SHORTCODE_MIN", 6)
+
 def generate_code(size):
     chars = string.ascii_lowercase + string.digits
     return ''.join(random.choice(chars) for _ in range(size))
 
-def create_short_url(instance, size=6):
+def create_short_url(instance, size=SHORTCODE_MIN):
     while True:
         new_code = generate_code(size)
         # Note :
