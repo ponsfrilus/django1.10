@@ -113,3 +113,9 @@ axdpd2 -> http://www.epfl.ch
 n17jsw -> http://www.google.com
 bbqfwq -> http://example.com
 ~~~
+
+## Basic views
+
+http://127.0.0.1:8000/
+http://127.0.0.1:8000/view-1/
+http://127.0.0.1:8000/view-2/
