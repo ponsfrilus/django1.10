@@ -1,5 +1,6 @@
 From trydjango1.10 https://www.youtube.com/playlist?list=PLEsfXFp6DpzQSEMN5PXvEWuD2gEWVngCZ
 
+
 ## New project creation and basic commands
 
 ~~~ bash
@@ -22,6 +23,7 @@ python manage.py migrate
 
 python manage.py migrate shortener --fake
 ~~~
+
 
 ## Django shell
 
@@ -57,6 +59,7 @@ python manage.py makemigrations shortener
 python manage.py createsuperuser
 ~~~
 
+
 ## Django Model manager
 
 ~~~ bash
@@ -89,6 +92,7 @@ wkkypy
 x0grn0
 ~~~
 
+
 ## Custom Django Management commands
 
 ~~~ bash
@@ -114,8 +118,15 @@ n17jsw -> http://www.google.com
 bbqfwq -> http://example.com
 ~~~
 
+
 ## Basic views
 
 http://127.0.0.1:8000/
 http://127.0.0.1:8000/view-1/
 http://127.0.0.1:8000/view-2/
+
+
+## Start to decode URLs
+
+http://127.0.0.1:8000/a/Alice/
+http://127.0.0.1:8000/b/Bob/
