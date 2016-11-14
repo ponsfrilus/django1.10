@@ -61,6 +61,9 @@ ROOT_URLCONF = 'shortme.urls'
 ROOT_HOSTCONF = 'shortme.hosts'
 DEFAULT_HOST = 'www'
 DEFAULT_REDIRECT_URL = "http://www.shortme.com:8000"
+PARENT_HOST = 'shortme.com'
+HOST_SCHEME = 'http'
+HOST_PORT = '8000'
 
 TEMPLATES = [
     {

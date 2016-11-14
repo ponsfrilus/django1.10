@@ -21,5 +21,5 @@ from shortener.views import ShortView, HomeView
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'^$', HomeView.as_view()),
-    url(r'^(?P<shortcode>[\w-]+)/$', ShortView.as_view()),
+    url(r'^(?P<shortcode>[\w-]+)/$', ShortView.as_view(), name='shortcode'),
 ]

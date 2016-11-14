@@ -1,6 +1,9 @@
 from django.conf import settings
 from django.db import models
 
+# from django.core.urlresolvers import reverse
+from django_hosts.resolvers import reverse
+
 from .utils import create_short_url
 from .validators import validate_url, validate_url_epfl
 
@@ -34,3 +37,6 @@ class ShortURL(models.Model):
 
     def __str__(self):
         return str(self.url)
+
+    def get_short_url(self):
+        return reverse("shortcode", kwargs={"shortcode":self.shortcode}, host='www')
