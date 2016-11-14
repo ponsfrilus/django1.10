@@ -130,3 +130,18 @@ http://127.0.0.1:8000/view-2/
 
 http://127.0.0.1:8000/a/Alice/
 http://127.0.0.1:8000/b/Bob/
+
+
+## host management
+
+http://django-hosts.readthedocs.io/en/latest/
+
+~~~ snip /etc/hosts
+127.0.0.1       shortme.com www.shortme.com blog.shortme.com
+~~~
+
+~~~ bash
+pip install django-hosts
+~~~
+
+http://blog.shortme.com:8000/a/axdpd2/
