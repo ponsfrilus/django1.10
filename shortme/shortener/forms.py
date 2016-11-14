@@ -8,23 +8,15 @@ class SubmitUrlForm(forms.Form):
 
     # def clean(self):
     #     '''
-    #     Validate the form
+    #     Clean the form
     #     '''
     #     cleaned_data = super(SubmitUrlForm, self).clean()
     #     print(cleaned_data)
-    #
-    # def clean_url(self):
-    #     '''
-    #     Validate the field
-    #     '''
-    #     url = self.cleaned_data['url']
-    #     url_validator = URLValidator()
-    #     try:
-    #         url_validator(url)
-    #     except:
-    #         raise forms.ValidationError("Invalid URL")
-    #
-    #     if not "epfl.ch" in url:
-    #         raise forms.ValidationError("Invalid URL, this is only for URLS inside epfl.")
-    #
-    #     return url
+
+    def clean_url(self):
+        '''
+        Clean the field 'url'
+        '''
+        url = self.cleaned_data['url']
+        url = validate_url(url)
+        return url

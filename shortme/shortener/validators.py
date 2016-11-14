@@ -3,13 +3,18 @@ from django.core.validators import URLValidator
 
 def validate_url(value):
     url_validator = URLValidator()
-    try:
-        url_validator(value)
-    except:
+    is_valid = False
+    for prefix in ('', 'http://'):
+        try:
+            new_value = prefix + value
+            url_validator(new_value)
+            is_valid = True
+        except:
+            pass
+    if not is_valid:
         raise ValidationError("Invalid URL for this field")
-    return value
+    return new_value
 
 def validate_url_epfl(value):
     if not "epfl.ch" in value:
         raise ValidationError("This only works for epfl URLs")
-    return value

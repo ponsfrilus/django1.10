@@ -35,4 +35,4 @@ class HomeView(View):
 class ShortView(View):  # Class Based View
     def get(self, request, shortcode=None, *args, **kwargs):
         obj = get_object_or_404(ShortURL, shortcode=shortcode)
-        return HttpResponse("hello again %s -> %s" % (shortcode, obj.url))
+        return HttpResponseRedirect(obj.url)
