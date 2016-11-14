@@ -2,6 +2,7 @@ from django.conf import settings
 from django.db import models
 
 from .utils import create_short_url
+from .validators import validate_url, validate_url_epfl
 
 SHORTCODE_MAX = getattr(settings, "SHORTCODE_MAX", 15)
 
@@ -17,7 +18,7 @@ class ShortURLManager(models.Manager):
             q.save()
 
 class ShortURL(models.Model):
-    url = models.CharField(max_length=220, )
+    url = models.CharField(max_length=220, validators=[validate_url, validate_url_epfl])
     shortcode = models.CharField(max_length=SHORTCODE_MAX, unique=True, blank=True)
     updated = models.DateTimeField(auto_now=True)  # every time the entry is saved
     timestamp = models.DateTimeField(auto_now_add=True)  # when entry was created

@@ -145,3 +145,15 @@ pip install django-hosts
 ~~~
 
 http://blog.shortme.com:8000/a/axdpd2/
+
+
+## Forms and Fields validation
+
+~~~ bash
+python manage.py makemigrations
+python manage.py migrate
+~~~
+
+Test on
++ http://www.shortme.com:8000/
++ http://www.shortme.com:8000/admin/

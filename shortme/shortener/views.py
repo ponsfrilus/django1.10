@@ -2,14 +2,29 @@ from django.http import HttpResponse, HttpResponseRedirect
 from django.shortcuts import render, get_object_or_404
 from django.views import View
 
+from .forms import SubmitUrlForm
 from .models import ShortURL
 
-# Create your views here.
-def short_redirect_view(request, shortcode=None, *args, **kwargs):  # Function Based View
-    obj = get_object_or_404(ShortURL, shortcode=shortcode)
-    return HttpResponseRedirect(obj.url)
+class HomeView(View):
+    def get(self, request, *args, **kwargs):
+        form = SubmitUrlForm()
+        context = {
+            "title": "Submit an URL",
+            "form": form,
+        }
+        return render(request, "shortener/home.html", context)
 
-class ShortCBView(View):  # Class Based View
+    def post(self, request, *args, **kwargs):
+        form = SubmitUrlForm(request.POST)
+        if form.is_valid():
+            print(form.cleaned_data)
+        context = {
+            "title": "Submit an URL",
+            "form": form,
+        }
+        return render(request, "shortener/home.html", context)
+
+class ShortView(View):  # Class Based View
     def get(self, request, shortcode=None, *args, **kwargs):
         obj = get_object_or_404(ShortURL, shortcode=shortcode)
         return HttpResponse("hello again %s -> %s" % (shortcode, obj.url))
