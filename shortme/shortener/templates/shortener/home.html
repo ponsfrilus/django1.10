@@ -1,7 +1,12 @@
+{% extends "base.html" %}
+
+{% block content %}
 <h1>{{ title }}</h1>
 
-<form action="." method="POST"> {% csrf_token %}
-    <!-- <input name='url' type='text' placeholder='Shorten your URL' /> -->
-    {{ form.as_p }}
-    <input type="submit" value="Shorten" />
-</form>
+<div class="col-sm-4 col-sm-offset-4">
+    <form action="." method="POST"> {% csrf_token %}
+        {{ form.as_p }}
+        <input class="btn btn-primary" type="submit" value="Shorten" />
+    </form>
+</div>
+{% endblock content %}

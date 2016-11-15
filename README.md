@@ -157,3 +157,8 @@ python manage.py migrate
 Test on
 + http://www.shortme.com:8000/
 + http://www.shortme.com:8000/admin/
+
+
+## Bootstrap
+
+http://getbootstrap.com/getting-started/#download
