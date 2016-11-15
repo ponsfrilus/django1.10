@@ -163,3 +163,16 @@ Test on
 
 http://getbootstrap.com/getting-started/#download
 http://getbootstrap.com/examples/cover/
+
+
+## PIP requirements
+
+List required packages
+~~~ bash
+pip freeze --local > requirements.txt
+~~~
+
+Install required packages on server
+~~~ bash
+pip install -r requirements.txt
+~~~
