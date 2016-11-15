@@ -162,3 +162,4 @@ Test on
 ## Bootstrap
 
 http://getbootstrap.com/getting-started/#download
+http://getbootstrap.com/examples/cover/

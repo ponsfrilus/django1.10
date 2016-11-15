@@ -5,8 +5,10 @@
 {% endblock title %}
 
 {% block content %}
-<h1>Created!</h1>
-<p> {{ object.url }} </p>
-<p> <a href="{{ object.get_short_url }}">{{ object.get_short_url }}</a> </p>
-<a class="btn btn-default" href="/">+ New</a>
+<div>
+    <h1>Created!</h1>
+    <p> {{ object.url }} </p>
+    <p> <a class="btn btn-primary" href="{{ object.get_short_url }}">{{ object.get_short_url }}</a> </p>
+    <a class="btn btn-default" href="/">+ New</a>
+</div>
 {% endblock content %}

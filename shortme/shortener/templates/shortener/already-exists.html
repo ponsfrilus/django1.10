@@ -5,9 +5,11 @@
 {% endblock title %}
 
 {% block content %}
-<h1>This one already exists.</h1>
-<p> {{ object.url }} </p>
-<p> <a href="{{ object.get_short_url }}">{{ object.get_short_url }}</a> </p>
-<p> Count : {{ object.clickevent.count|default:"0"}} </p>
-<a class="btn btn-default" href="/">+ New</a>
+<div>
+    <h1>This one already exists.</h1>
+    <p> {{ object.url }} </p>
+    <p> <a class="btn btn-primary" href="{{ object.get_short_url }}">{{ object.get_short_url }}</a> </p>
+    <p> Count : {{ object.clickevent.count|default:"0"}} </p>
+    <a class="btn btn-default" href="/">+ New</a>
+</div>
 {% endblock content %}
