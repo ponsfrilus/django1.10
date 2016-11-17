@@ -176,3 +176,15 @@ Install required packages on server
 ~~~ bash
 pip install -r requirements.txt
 ~~~
+
+
+## More ...
+
++ Compression (js/css)
+    + http://django-compressor.readthedocs.io/en/latest/
++ API
+    + http://www.django-rest-framework.org/
+    + http://tastypieapi.org/
++ JSON
+    + https://docs.python.org/3/library/json.html
+    + django.core.serializers.json
