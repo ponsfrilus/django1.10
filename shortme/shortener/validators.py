@@ -9,6 +9,7 @@ def validate_url(value):
             new_value = prefix + value
             url_validator(new_value)
             is_valid = True
+            break
         except:
             pass
     if not is_valid:
