@@ -5,7 +5,7 @@
     Fabric3 file to deploy project.
     usage :
     $ pww
-    $ fab -H test --password=${PASS} dev_deploy
+    $ fab -H test --password=${PASS} deploy
     $ fab -H prod --password=${PASS} full_deploy
 """
 
@@ -127,18 +127,18 @@ def migrate():
         run(sub("{python} manage.py migrate"))
 
 
-# @task
-# def collect_static():
-#     with cd(sub("{code_dir}")):
-#         run(sub("{python} manage.py collectstatic --noinput"))
-#
-#
-# @task
-# def clear_collect_static():
-#     with cd(sub("{code_dir}")):
-#         run(sub("{python} manage.py collectstatic --noinput -c"))
-#
-#
+@task
+def collect_static():
+    with cd(sub("{code_dir}")):
+        run(sub("{python} manage.py collectstatic --noinput"))
+
+
+@task
+def clear_collect_static():
+    with cd(sub("{code_dir}")):
+        run(sub("{python} manage.py collectstatic --noinput -c"))
+
+
 # @task
 # def compress():
 #     with cd(sub("{code_dir}")):
@@ -158,6 +158,7 @@ def full_deploy():
     virtualenv_init()
     virtualenv_setup()
     migrate()
+    clear_collect_static()
     mod_wsgi_express_setup()
     apache_setup()
     apache_restart()

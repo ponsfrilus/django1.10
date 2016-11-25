@@ -16,6 +16,8 @@ PARENT_HOST = 'shortme.com'
 HOST_SCHEME = 'http'
 HOST_PORT = '8000'
 
+STATIC_ROOT = "/django_app/shortme/static/"
+
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
