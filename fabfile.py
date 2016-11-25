@@ -139,6 +139,12 @@ def clear_collect_static():
         run(sub("{python} manage.py collectstatic --noinput -c"))
 
 
+@task
+def initadmins():
+    with cd(sub("{code_dir}")):
+        run(sub("{python} manage.py initadmins"))
+
+
 # @task
 # def compress():
 #     with cd(sub("{code_dir}")):
@@ -159,6 +165,7 @@ def full_deploy():
     virtualenv_setup()
     migrate()
     clear_collect_static()
+    initadmins()
     mod_wsgi_express_setup()
     apache_setup()
     apache_restart()

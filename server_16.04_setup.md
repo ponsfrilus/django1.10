@@ -54,3 +54,51 @@ sudo vi /etc/hosts
 ~~~
 128.178.7.114   enacit1sbtest1.epfl.ch  enacit1sbtest1 vas-y.epfl.ch vas-y
 ~~~
+
+
+## Tequila install
+
+~~~ bash
+sudo apt install libssl-dev
+wget http://tequila.epfl.ch/download/2.0/tequila-apache-C-2.0.16.tgz
+tar -xvzf tequila-apache-C-2.0.16.tgz
+cd tequila-2.0.16/Apache/C/
+ed - Makefile <<EOFMakefile
+g/httpd /s:httpd :apache2 :
+g/apxs/s:apxs :apxs2 :
+wq
+EOFMakefile
+make
+sudo make install
+
+sudo vi /etc/apache2/mods-available/tequila.load /etc/apache2/mods-available/tequila.conf
+~~~
+
+~~~ snip
+LoadModule tequila_module /usr/lib/apache2/modules/mod_tequila.so
+~~~
+
+~~~ snip
+<IfModule mod_tequila.c>
+  TequilaLogLevel        2
+  TequilaLog             /var/log/apache2/tequila.log
+  TequilaServer          tequila.epfl.ch
+  # TequilaSessionDir      /var/www/Tequila/Sessions
+  TequilaSessionDir      /var/tequila
+  TequilaSessionMax      3600
+</IfModule>
+~~~
+
+~~~ bash
+sudo mkdir /var/tequila
+sudo chown www-data: /var/tequila
+
+sudo a2enmod tequila
+sudo service apache2 restart
+
+sudo apache2ctl -t -D DUMP_MODULES | grep tequila
+~~~
+
+~~~ out
+tequila_module (shared)
+~~~
