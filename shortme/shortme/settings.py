@@ -25,7 +25,7 @@ SECRET_KEY = 'gpooi81+)qei(%xrz41@7o05ttx)=su$j$w_t)3m2wtr_-+0c8'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ["www.shortme.com", "shortme.com", "blog.shortme.com"]
+ALLOWED_HOSTS = []
 
 
 # Application definition
@@ -59,12 +59,6 @@ MIDDLEWARE = [
 ]
 
 ROOT_URLCONF = 'shortme.urls'
-ROOT_HOSTCONF = 'shortme.hosts'
-DEFAULT_HOST = 'www'
-DEFAULT_REDIRECT_URL = "http://www.shortme.com:8000"
-PARENT_HOST = 'shortme.com'
-HOST_SCHEME = 'http'
-HOST_PORT = '8000'
 
 TEMPLATES = [
     {
@@ -135,5 +129,12 @@ USE_TZ = True
 STATIC_URL = '/static/'
 
 
-SHORTCODE_MIN = 6
-SHORTCODE_MAX = 15
+from shortme.app_settings import *
+
+hostname = os.uname()[1]
+if hostname == "vas-y-test":
+    from shortme.test_settings import *
+elif hostname == "enacit1sbtest1":  # server that hosts vas-y.epfl.ch demo
+    from shortme.prod_settings import *
+else:
+    from shortme.dev_settings import *
