@@ -8,6 +8,7 @@ from .utils import create_short_url
 from .validators import validate_url, validate_url_epfl
 
 SHORTCODE_MAX = getattr(settings, "SHORTCODE_MAX", 15)
+DEFAULT_HOST = getattr(settings, "DEFAULT_HOST", "www")
 
 class ShortURLManager(models.Manager):
     def all(self, *args, **kwargs):
@@ -39,4 +40,4 @@ class ShortURL(models.Model):
         return str(self.url)
 
     def get_short_url(self):
-        return reverse("shortcode", kwargs={"shortcode":self.shortcode}, host='www')
+        return reverse("shortcode", kwargs={"shortcode":self.shortcode}, host=DEFAULT_HOST)
