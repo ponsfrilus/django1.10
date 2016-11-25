@@ -1,0 +1,56 @@
+# Ubuntu 16.04 vm setup to deploy our application
+
+
+## Server basics
+
+~~~ bash
+sudo apt update && sudo apt dist-upgrade; /usr/lib/update-notifier/update-motd-reboot-required
+sudo apt install vim
+sudo apt install tree
+sudo apt install multitail
+sudo pip3 install Glances
+sudo apt install build-essential
+sudo apt install meld
+sudo apt install git
+sudo apt install python3-dev python3-pip
+sudo apt install virtualenv
+sudo apt install mailutils ssmtp
+sudo vi /etc/ssmtp/ssmtp.conf
+sudo vi /etc/ssmtp/revaliases
+echo test | sudo mail -s test1 Samuel.Bancal@epfl.ch
+sudo apt install ntp
+sudo vi /etc/ntp.conf
+date; sudo service ntp restart; date;
+sudo pip3 install Glances
+~~~
+
+
+## Apache & MySQL
+
+~~~ bash
+sudo apt install apache2
+sudo apt install apache2-dev
+sudo apt install mysql-server
+sudo apt install libmysqlclient-dev
+sudo mysql -u root -p
+~~~
+
+~~~ sql
+CREATE DATABASE shortme;
+CREATE USER 'shortme'@'localhost' IDENTIFIED BY '<KeepassX>';
+GRANT ALL PRIVILEGES ON shortme.* TO 'shortme'@'localhost';
+FLUSH PRIVILEGES;
+~~~
+
+
+## Our application requirements
+
+~~~ bash
+sudo mkdir /django_app
+sudo chown sbancal\: /django_app/
+sudo vi /etc/hosts
+~~~
+
+~~~
+128.178.7.114   enacit1sbtest1.epfl.ch  enacit1sbtest1 vas-y.epfl.ch vas-y
+~~~
